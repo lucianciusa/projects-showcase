@@ -1,66 +1,63 @@
 import React, { useState } from 'react'
+import { useLanguage } from '@/context/LanguageContext'
 
 export default function Screenshots() {
+  const { t } = useLanguage()
   const images = [
     {
       src: '/assets/screenshots/screen-01-landing.png',
-      title: 'Landing Discovery',
-      caption: 'Main discovery view with search, category pills, and premium positioning.'
+      title: t.screenshots.image1,
+      caption: t.screenshots.image1Desc
     },
     {
       src: '/assets/screenshots/screen-02-featured.png',
-      title: 'Featured Restaurants',
-      caption: 'Curated restaurant cards with ratings, cuisine tags, and pricing context.'
+      title: t.screenshots.image2,
+      caption: t.screenshots.image2Desc
     },
     {
       src: '/assets/screenshots/screen-03-catalog.png',
-      title: 'Catalog Filters',
-      caption: 'Advanced filtering by segment, price range, and service extras.'
+      title: t.screenshots.image3,
+      caption: t.screenshots.image3Desc
     },
     {
       src: '/assets/screenshots/screen-04-detail.png',
-      title: 'Restaurant Detail',
-      caption: 'Restaurant profile with map, highlights, and quick operational stats.'
+      title: t.screenshots.image4,
+      caption: t.screenshots.image4Desc
     },
     {
-      src: '/assets/screenshots/screen-05-onboarding.png',
-      title: 'Onboarding Step 1',
-      caption: 'Structured onboarding flow for restaurant registration and account setup.'
+      src: '/assets/screenshots/screen-05-restaurant-onboarding-steps.png',
+      title: t.screenshots.image5,
+      caption: t.screenshots.image5Desc
     },
     {
       src: '/assets/screenshots/screen-06-about.png',
-      title: 'About Narrative',
-      caption: 'Brand narrative section that explains positioning and value proposition.'
+      title: t.screenshots.image6,
+      caption: t.screenshots.image6Desc
     },
     {
       src: '/assets/screenshots/screen-07-login.png',
-      title: 'Access and Login',
-      caption: 'Private-area access pattern for administrators and restaurant owners.'
+      title: t.screenshots.image7,
+      caption: t.screenshots.image7Desc
     },
     {
-      src: '/assets/screenshots/screen-08-upload.png',
-      title: 'Menu Digitalization',
-      caption: 'Menu upload and document-processing workflow for daily menu ingestion.'
+      src: '/assets/screenshots/screen-08-restaurant-panel.png',
+      title: t.screenshots.image8,
+      caption: t.screenshots.image8Desc
     },
     {
-      src: '/assets/screenshots/screen-09-prediction.png',
-      title: 'Prediction Layer',
-      caption: 'Demand-prediction interface integrating model outputs with user workflow.'
+      src: '/assets/screenshots/screen-09-menu-digitalization.png',
+      title: t.screenshots.image9,
+      caption: t.screenshots.image9Desc
     },
     {
-      src: '/assets/screenshots/screen-10-analytics.png',
-      title: 'Analytics Support',
-      caption: 'Operational indicators used to guide staffing and service planning.'
+      src: '/assets/screenshots/screen-10-demand-prediction.png',
+      title: t.screenshots.image10,
+      caption: t.screenshots.image10Desc
     },
     {
-      src: '/assets/screenshots/screen-11-controls.png',
-      title: 'Operational Controls',
-      caption: 'Management controls that support restaurant-side configuration.'
-    },
-    {
-      src: '/assets/screenshots/screen-12-summary.png',
-      title: 'End-to-End Experience',
-      caption: 'Final integrated experience showing cohesion across discovery and insights.'
+      src: '/assets/screenshots/screen-11-menu-prediction.png',
+      title: t.screenshots.image11,
+      caption: t.screenshots.image11Desc
     },
   ]
 
@@ -73,17 +70,17 @@ export default function Screenshots() {
   const current = images[activeIndex]
 
   return (
-    <section className="py-20 bg-dark-primary">
+    <section id="screenshots" className="py-20 bg-dark-primary">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            Application <span className="text-orange-accent">Screenshots</span>
+            {t.screenshots.title.split(' ')[0]} <span className="text-orange-accent">{t.screenshots.title.split(' ').slice(1).join(' ')}</span>
           </h2>
-          <p className="text-text-secondary text-lg">All project visuals with descriptive navigation and enlarged preview</p>
+          <p className="text-text-secondary text-lg">{t.screenshots.subtitle}</p>
         </div>
 
         <div className="grid lg:grid-cols-[2fr_1fr] gap-8">
-          <div className="bg-dark-secondary border border-dark-tertiary rounded-2xl overflow-hidden">
+          <div className="bg-dark-secondary border border-white/10 rounded-2xl overflow-hidden hover:border-orange-accent/50 transition">
             <button
               type="button"
               onClick={() => setIsLightboxOpen(true)}
@@ -95,7 +92,7 @@ export default function Screenshots() {
                 className="w-full h-[420px] sm:h-[520px] object-contain bg-[#0a0f18]"
               />
             </button>
-            <div className="p-6 border-t border-dark-tertiary">
+            <div className="p-6 border-t border-white/10">
               <div className="flex items-center justify-between gap-4 mb-3">
                 <h3 className="text-2xl font-bold">{current.title}</h3>
                 <span className="text-sm text-text-secondary">{activeIndex + 1} / {images.length}</span>
@@ -105,23 +102,23 @@ export default function Screenshots() {
                 <button
                   type="button"
                   onClick={goPrev}
-                  className="px-4 py-2 rounded-lg border border-dark-tertiary hover:border-orange-accent/50 hover:text-orange-accent transition"
+                  className="px-4 py-2 rounded-lg border border-white/10 hover:border-orange-accent/50 hover:text-orange-accent transition"
                 >
-                  Previous
+                  {t.screenshots.previous}
                 </button>
                 <button
                   type="button"
                   onClick={goNext}
-                  className="px-4 py-2 rounded-lg border border-dark-tertiary hover:border-orange-accent/50 hover:text-orange-accent transition"
+                  className="px-4 py-2 rounded-lg border border-white/10 hover:border-orange-accent/50 hover:text-orange-accent transition"
                 >
-                  Next
+                  {t.screenshots.next}
                 </button>
                 <button
                   type="button"
                   onClick={() => setIsLightboxOpen(true)}
                   className="ml-auto px-4 py-2 rounded-lg bg-orange-accent text-dark-primary font-semibold hover:bg-orange-light transition"
                 >
-                  Enlarge
+                  {t.screenshots.enlarge}
                 </button>
               </div>
             </div>
@@ -136,7 +133,7 @@ export default function Screenshots() {
                 className={`w-full text-left rounded-xl border transition overflow-hidden ${
                   activeIndex === idx
                     ? 'border-orange-accent bg-orange-accent/10'
-                    : 'border-dark-tertiary bg-dark-secondary hover:border-orange-accent/40'
+                    : 'border-white/10 bg-dark-secondary hover:border-orange-accent/50'
                 }`}
               >
                 <div className="flex gap-3 p-3">
@@ -162,24 +159,24 @@ export default function Screenshots() {
                 <button
                   type="button"
                   onClick={() => setIsLightboxOpen(false)}
-                  className="px-4 py-2 rounded-lg border border-dark-tertiary hover:border-orange-accent/60"
+                  className="px-4 py-2 rounded-lg border border-white/10 hover:border-orange-accent/50"
                 >
                   Close
                 </button>
               </div>
-              <div className="relative flex-1 bg-[#0a0f18] rounded-xl border border-dark-tertiary overflow-hidden">
+              <div className="relative flex-1 bg-[#0a0f18] rounded-xl border border-white/10 hover:border-orange-accent/50 transition overflow-hidden">
                 <img src={current.src} alt={current.title} className="w-full h-full object-contain" />
                 <button
                   type="button"
                   onClick={goPrev}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 px-3 py-2 rounded-lg bg-dark-primary/80 border border-dark-tertiary"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 px-3 py-2 rounded-lg bg-dark-primary/80 border border-white/10 hover:border-orange-accent/50 transition"
                 >
                   Prev
                 </button>
                 <button
                   type="button"
                   onClick={goNext}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 px-3 py-2 rounded-lg bg-dark-primary/80 border border-dark-tertiary"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 px-3 py-2 rounded-lg bg-dark-primary/80 border border-white/10 hover:border-orange-accent/50 transition"
                 >
                   Next
                 </button>

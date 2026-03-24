@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLanguage } from '@/context/LanguageContext'
 
 function StatIcon({ type }: { type: 'users' | 'store' | 'repeat' | 'file' }) {
   const iconClass = 'w-5 h-5 text-orange-accent'
@@ -42,12 +43,13 @@ function StatIcon({ type }: { type: 'users' | 'store' | 'repeat' | 'file' }) {
 }
 
 export default function Problem() {
+  const { t } = useLanguage()
   return (
     <section id="problem" className="py-20 bg-dark-secondary/50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            The <span className="text-orange-accent">Problem</span>
+            {t.problem.title.split(' ')[0]} <span className="text-orange-accent">{t.problem.title.split(' ').slice(1).join(' ')}</span>
           </h2>
           <p className="text-text-secondary text-lg">In Madrid's Azca zone, a bottleneck effect impacts daily dining choices</p>
         </div>
@@ -56,61 +58,61 @@ export default function Problem() {
           <div className="space-y-6">
             <div className="flex gap-4">
               <div className="min-w-14 flex items-start justify-center">
-                <div className="w-12 h-12 rounded-lg bg-orange-accent/20 flex items-center justify-center text-orange-accent font-bold text-lg">
+                <div className="w-12 h-12 rounded-lg border border-white/10 bg-orange-accent/20 flex items-center justify-center text-orange-accent font-bold text-lg">
                   <StatIcon type="users" />
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2">27,000 Employees</h3>
-                <p className="text-text-secondary">All eating lunch simultaneously between 14:00-16:00 in the same zone</p>
+                <h3 className="text-xl font-bold mb-2">{t.problem.employees}</h3>
+                <p className="text-text-secondary">{t.problem.employeesDesc}</p>
               </div>
             </div>
 
             <div className="flex gap-4">
               <div className="min-w-14 flex items-start justify-center">
-                <div className="w-12 h-12 rounded-lg bg-orange-accent/20 flex items-center justify-center text-orange-accent font-bold text-lg">
+                <div className="w-12 h-12 rounded-lg border border-white/10 bg-orange-accent/20 flex items-center justify-center text-orange-accent font-bold text-lg">
                   <StatIcon type="store" />
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2">~70 Restaurants</h3>
-                <p className="text-text-secondary">Limited dining options creating unavoidable waiting queues</p>
+                <h3 className="text-xl font-bold mb-2">{t.problem.restaurants}</h3>
+                <p className="text-text-secondary">{t.problem.restaurantsDesc}</p>
               </div>
             </div>
 
             <div className="flex gap-4">
               <div className="min-w-14 flex items-start justify-center">
-                <div className="w-12 h-12 rounded-lg bg-orange-accent/20 flex items-center justify-center text-orange-accent font-bold text-lg">
+                <div className="w-12 h-12 rounded-lg border border-white/10 bg-orange-accent/20 flex items-center justify-center text-orange-accent font-bold text-lg">
                   <StatIcon type="repeat" />
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2">Menu Repetition</h3>
-                <p className="text-text-secondary">Employees forced to eat at the same restaurants, losing satisfaction</p>
+                <h3 className="text-xl font-bold mb-2">{t.problem.repetition}</h3>
+                <p className="text-text-secondary">{t.problem.repetitionDesc}</p>
               </div>
             </div>
 
             <div className="flex gap-4">
               <div className="min-w-14 flex items-start justify-center">
-                <div className="w-12 h-12 rounded-lg bg-orange-accent/20 flex items-center justify-center text-orange-accent font-bold text-lg">
+                <div className="w-12 h-12 rounded-lg border border-white/10 bg-orange-accent/20 flex items-center justify-center text-orange-accent font-bold text-lg">
                   <StatIcon type="file" />
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2">Manual Menus</h3>
-                <p className="text-text-secondary">Restaurants print daily menus on paper with no digital access for customers</p>
+                <h3 className="text-xl font-bold mb-2">{t.problem.menus}</h3>
+                <p className="text-text-secondary">{t.problem.menusDesc}</p>
               </div>
             </div>
           </div>
 
           <div className="space-y-4">
-            <div className="bg-dark-primary p-8 rounded-xl border border-dark-tertiary">
-              <p className="text-orange-accent font-semibold mb-4">The Bottleneck Effect</p>
+            <div className="bg-dark-primary p-8 rounded-xl border border-white/10 hover:border-orange-accent/50 transition">
+              <p className="text-orange-accent font-semibold mb-4">{t.problem.bottleneck}</p>
               <p className="text-text-secondary leading-relaxed mb-6">
-                With 27,000 employees and only ~70 restaurants, there's a severe bottleneck. Employees can't browse restaurants freely—they rely on habitual choices due to time constraints and queue anxieties.
+                {t.problem.bottleneckDesc}
               </p>
               <div className="h-2 bg-gradient-to-r from-orange-accent to-orange-light rounded-full"></div>
-              <p className="text-text-secondary text-sm mt-6">This created a need for a smart discovery and demand prediction solution.</p>
+              <p className="text-text-secondary text-sm mt-6">{t.problem.bottleneckConclusion}</p>
             </div>
           </div>
         </div>

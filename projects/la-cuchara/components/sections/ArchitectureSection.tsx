@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLanguage } from '@/context/LanguageContext'
 
 function ArchitectureIcon({ kind }: { kind: 'frontend' | 'backend' | 'ml' | 'db' | 'weather' | 'calendar' | 'history' }) {
   const cls = 'w-6 h-6 text-orange-accent'
@@ -62,99 +63,101 @@ function ArchitectureIcon({ kind }: { kind: 'frontend' | 'backend' | 'ml' | 'db'
 }
 
 export default function Architecture() {
+  const { language, t } = useLanguage()
+  const flowchartSrc = language === 'en'
+    ? '/assets/diagrams/flowchart-cuisineaml-english.png'
+    : '/assets/diagrams/flowchart-cuisineaml.png'
+
   return (
     <section className="py-20 bg-dark-primary">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            System <span className="text-orange-accent">Architecture</span>
+            {t.architecture.title.split(' ').slice(0, 1).join(' ')} <span className="text-orange-accent">{t.architecture.title.split(' ').slice(1).join(' ')}</span>
           </h2>
-          <p className="text-text-secondary text-lg">Production-ready infrastructure built on Azure</p>
+          <p className="text-text-secondary text-lg">{t.architecture.subtitle}</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           {/* Frontend */}
-          <div className="glass p-8 rounded-xl border border-orange-accent/30">
+          <div className="glass p-8 rounded-xl border border-orange-accent/30 hover:border-orange-accent/50 transition">
             <div className="mb-4"><ArchitectureIcon kind="frontend" /></div>
-            <h3 className="text-xl font-bold mb-4 text-orange-accent">Frontend</h3>
+            <h3 className="text-xl font-bold mb-4 text-orange-accent">{t.architecture.frontendLabel}</h3>
             <ul className="space-y-2 text-text-secondary text-sm">
-              <li>✓ React + Vite</li>
-              <li>✓ Tailwind CSS</li>
-              <li>✓ Mobile-responsive</li>
-              <li>✓ Real-time updates</li>
+              {t.architecture.frontendItems.map((item, idx) => (
+                <li key={idx}>✓ {item}</li>
+              ))}
             </ul>
           </div>
 
           {/* Backend */}
-          <div className="glass p-8 rounded-xl border border-orange-accent/30">
+          <div className="glass p-8 rounded-xl border border-orange-accent/30 hover:border-orange-accent/50 transition">
             <div className="mb-4"><ArchitectureIcon kind="backend" /></div>
-            <h3 className="text-xl font-bold mb-4 text-orange-accent">Backend</h3>
+            <h3 className="text-xl font-bold mb-4 text-orange-accent">{t.architecture.backendLabel}</h3>
             <ul className="space-y-2 text-text-secondary text-sm">
-              <li>✓ FastAPI + Python</li>
-              <li>✓ SQLAlchemy ORM</li>
-              <li>✓ RESTful APIs</li>
-              <li>✓ Audit logging</li>
+              {t.architecture.backendItems.map((item, idx) => (
+                <li key={idx}>✓ {item}</li>
+              ))}
             </ul>
           </div>
 
           {/* ML/Data */}
-          <div className="glass p-8 rounded-xl border border-orange-accent/30">
+          <div className="glass p-8 rounded-xl border border-orange-accent/30 hover:border-orange-accent/50 transition">
             <div className="mb-4"><ArchitectureIcon kind="ml" /></div>
-            <h3 className="text-xl font-bold mb-4 text-orange-accent">ML Pipeline</h3>
+            <h3 className="text-xl font-bold mb-4 text-orange-accent">{t.architecture.mlPipelineLabel}</h3>
             <ul className="space-y-2 text-text-secondary text-sm">
-              <li>✓ XGBoost model</li>
-              <li>✓ AutoML Studio</li>
-              <li>✓ 30+ features engineered</li>
-              <li>✓ Azure Logic Apps</li>
+              {t.architecture.mlItems.map((item, idx) => (
+                <li key={idx}>✓ {item}</li>
+              ))}
             </ul>
           </div>
         </div>
 
         {/* Data Sources */}
-        <div className="bg-dark-secondary p-8 rounded-xl border border-dark-tertiary">
-          <h3 className="text-2xl font-bold mb-6">Data Sources & Enrichment</h3>
+        <div className="bg-dark-secondary p-8 rounded-xl border border-white/10 hover:border-orange-accent/50 transition">
+          <h3 className="text-2xl font-bold mb-6">{t.architecture.dataSourcesTitle}</h3>
           <div className="grid md:grid-cols-4 gap-6">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 rounded-lg bg-orange-accent/20 flex items-center justify-center"><ArchitectureIcon kind="db" /></div>
               <div>
-                <p className="font-semibold mb-1">Azure SQL Database</p>
-                <p className="text-text-secondary text-sm">Restaurant details & historical services</p>
+                <p className="font-semibold mb-1">{t.architecture.dataSource1}</p>
+                <p className="text-text-secondary text-sm">{t.architecture.dataSource1Desc}</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 rounded-lg bg-orange-accent/20 flex items-center justify-center"><ArchitectureIcon kind="weather" /></div>
               <div>
-                <p className="font-semibold mb-1">Open-Meteo API</p>
-                <p className="text-text-secondary text-sm">Real-time weather data</p>
+                <p className="font-semibold mb-1">{t.architecture.dataSource2}</p>
+                <p className="text-text-secondary text-sm">{t.architecture.dataSource2Desc}</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 rounded-lg bg-orange-accent/20 flex items-center justify-center"><ArchitectureIcon kind="calendar" /></div>
               <div>
-                <p className="font-semibold mb-1">Calendar Features</p>
-                <p className="text-text-secondary text-sm">Holidays & payroll periods</p>
+                <p className="font-semibold mb-1">{t.architecture.dataSource3}</p>
+                <p className="text-text-secondary text-sm">{t.architecture.dataSource3Desc}</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 rounded-lg bg-orange-accent/20 flex items-center justify-center"><ArchitectureIcon kind="history" /></div>
               <div>
-                <p className="font-semibold mb-1">Historical Data</p>
-                <p className="text-text-secondary text-sm">Service volumes & trends</p>
+                <p className="font-semibold mb-1">{t.architecture.dataSource4}</p>
+                <p className="text-text-secondary text-sm">{t.architecture.dataSource4Desc}</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-dark-secondary p-8 rounded-xl border border-dark-tertiary mt-8">
-          <h3 className="text-2xl font-bold mb-3">System Flowchart</h3>
+        <div className="bg-dark-secondary p-8 rounded-xl border border-white/10 hover:border-orange-accent/50 transition mt-8">
+          <h3 className="text-2xl font-bold mb-3">{t.architecture.flowchartTitle}</h3>
           <p className="text-text-secondary mb-5">
-            End-to-end flow of data ingestion, enrichment, prediction, and user-facing output.
+            {t.architecture.flowchartDescription}
           </p>
-          <a href="/assets/diagrams/flowchart-cuisineaml.png" target="_blank" rel="noopener noreferrer" className="block">
+          <a href={flowchartSrc} target="_blank" rel="noopener noreferrer" className="block">
             <img
-              src="/assets/diagrams/flowchart-cuisineaml.png"
-              alt="CuisineAML architecture flowchart"
-              className="w-full rounded-xl border border-dark-tertiary bg-[#0a0f18] hover:border-orange-accent/50 transition"
+              src={flowchartSrc}
+              alt={language === 'en' ? 'CuisineAML architecture flowchart in English' : 'Diagrama de arquitectura de CuisineAML en Espanol'}
+              className="w-full rounded-xl border border-white/10 bg-[#0a0f18] hover:border-orange-accent/50 transition"
             />
           </a>
         </div>

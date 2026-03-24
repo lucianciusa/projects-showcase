@@ -1,42 +1,50 @@
-# Lucian Project Showcase
+# Projects Showcase Repository
 
-Technical portfolio repository for AI, Data, and Azure projects.
+Monorepo-style portfolio for multiple project previews. Each project has its own runnable codebase and project-specific README.
 
-## Structure
+## Repository Layout
 
-- `projects/`: one folder per project
-- `templates/`: reusable templates for new project documentation
-- `assets/`: screenshots, diagrams, gifs
-- `docs/`: shared architecture and methodology notes
+- `projects/`: independent project previews/apps.
+- `templates/`: templates for creating new project documentation.
+- `assets/`: shared, repository-level media.
+- `docs/`: shared documentation standards and writing guidelines.
 
 ## Project Index
 
-| Project | Focus | Stack | Status | Repo Folder |
+| Project | Type | Stack | Status | Path |
 |---|---|---|---|---|
-| La Cuchara | AI Product | Python, Azure, APIs | In Progress | `projects/la-cuchara` |
+| La Cuchara | Interactive project showcase website | Next.js, React, Tailwind CSS | Active | `projects/la-cuchara` |
 
-## How To Add A New Project
+## Current State (La Cuchara)
 
-1. Copy `templates/project-README-template.md` into `projects/<project-slug>/README.md`.
-2. Fill every section with concrete technical details.
-3. Add screenshots/diagrams to `assets/<project-slug>/`.
-4. Update the Project Index table above.
+Implemented and documented in the project folder:
 
-## Recommended Quality Checklist
+- Bilingual UI (`EN`/`ES`) with runtime language switch.
+- Language-aware architecture flowchart image.
+- Responsive top navigation with compact mobile menu.
+- Scroll-driven reveal animations for sections and card boxes.
+- Team member photos loaded from `public/assets/team`.
+- Consistent border system and hover styling across cards.
 
-- Problem and business context are explicit.
-- Architecture diagram included.
-- Data flow and model/evaluation details documented.
-- Reproducible run steps are provided.
-- Key lessons learned and next steps are captured.
+## How To Add A New Project Preview
 
-## Publish To GitHub
+1. Create a new folder: `projects/<project-slug>/`.
+2. Copy `templates/project-README-template.md` into `projects/<project-slug>/README.md`.
+3. Document architecture, stack, run/deploy, and current status.
+4. Add project media under that project (`public/assets/...`) or shared root `assets/` if truly cross-project.
+5. Add a new row to the Project Index table in this file.
+
+## Documentation Rules
+
+- Keep each project README up to date with implemented features.
+- Keep run instructions copy-paste ready.
+- Include deployment notes per project.
+- Keep root README focused on repository-level navigation and index.
+
+## GitHub Push
 
 ```bash
-git init
 git add .
-git commit -m "Initial showcase repository scaffold"
-git branch -M main
-git remote add origin <YOUR_NEW_REPO_URL>
-git push -u origin main
+git commit -m "Update showcase docs"
+git push
 ```

@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useEffect } from 'react'
 import HeaderBar from '../components/layout/HeaderBar'
 import ProjectFooter from '../components/layout/ProjectFooter'
 import HeroSection from '../components/sections/HeroSection'
@@ -11,6 +12,63 @@ import ScreenshotsSection from '../components/sections/ScreenshotsSection'
 import TeamSection from '../components/sections/TeamSection'
 
 export default function Home() {
+  useEffect(() => {
+    const sections = Array.from(document.querySelectorAll('main section')) as HTMLElement[]
+    if (!sections.length) {
+      return
+    }
+
+    const boxSelectors = '.glass, .rounded-xl.border, .rounded-2xl.border'
+    const boxes = sections.flatMap((section) => {
+      const sectionBoxes = Array.from(section.querySelectorAll(boxSelectors)) as HTMLElement[]
+      return sectionBoxes
+    })
+
+    sections.forEach((section, index) => {
+      section.classList.add('scroll-pop')
+      section.style.setProperty('--reveal-delay', `${Math.min(index * 22, 110)}ms`)
+    })
+
+    sections.forEach((section) => {
+      const sectionBoxes = Array.from(section.querySelectorAll(boxSelectors)) as HTMLElement[]
+      sectionBoxes.forEach((box, boxIndex) => {
+        box.classList.add('scroll-pop-box')
+        box.style.setProperty('--box-reveal-delay', `${Math.min(boxIndex * 26, 130)}ms`)
+      })
+    })
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-inview')
+          } else {
+            entry.target.classList.remove('is-inview')
+          }
+        })
+      },
+      {
+        threshold: 0.16,
+        rootMargin: '0px 0px -8% 0px',
+      }
+    )
+
+    sections.forEach((section) => observer.observe(section))
+    boxes.forEach((box) => observer.observe(box))
+
+    return () => {
+      observer.disconnect()
+      sections.forEach((section) => {
+        section.classList.remove('scroll-pop', 'is-inview')
+        section.style.removeProperty('--reveal-delay')
+      })
+      boxes.forEach((box) => {
+        box.classList.remove('scroll-pop-box', 'is-inview')
+        box.style.removeProperty('--box-reveal-delay')
+      })
+    }
+  }, [])
+
   return (
     <>
       <Head>
@@ -21,7 +79,6 @@ export default function Home() {
         <meta property="og:title" content="CuisineAML - AI Restaurant Demand Forecasting" />
         <meta property="og:description" content="Intelligent platform for restaurant discovery and demand forecasting using AI/ML." />
         <meta property="og:type" content="website" />
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23E8754F' width='100' height='100' rx='20'/><text x='50' y='70' font-size='60' font-weight='bold' text-anchor='middle' fill='%231a1f2e'>CM</text></svg>" />
       </Head>
 
       <HeaderBar />
