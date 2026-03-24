@@ -1,149 +1,119 @@
-# AZCA - AI Restaurant Demand Forecasting Platform (Showcase Website)
+# La Cuchara - AZCA Showcase Website
 
-This is the **showcase website** for AZCA, deployed on Vercel. The main project repository is at [github.com/adnanhamidoun/lacuchara](https://github.com/adnanhamidoun/lacuchara).
+Interactive, bilingual project showcase for the La Cuchara / AZCA platform (AI restaurant discovery and demand forecasting).
 
-## Overview
+## 1. Overview
 
-**AZCA** (AI Restaurant Demand Forecasting Platform) solves the dining bottleneck in Madrid's Azca zone:
-- **Problem**: 27,000 employees must eat during the same 2-hour window with only ~70 restaurants available
-- **Solution**: A two-phase platform combining intelligent restaurant discovery with AI demand forecasting
-- **Target Users**: Employees seeking diverse dining options + Restaurants optimizing operations
-- **Status**: Production-ready code (requires Azure deployment)
+- Goal: present the product story, architecture, feature set, and technical stack in a polished, recruiter-friendly web experience.
+- Scope: this repository folder contains the showcase website only.
+- Main product repository: https://github.com/adnanhamidoun/lacuchara
+- Production URL: https://la-cuchara.vercel.app
 
-## Project Structure (Showcase Website)
+## 2. Current Features
+
+- Bilingual UI with runtime toggle: English and Spanish.
+- Language-aware flowchart in architecture section:
+	- English image when `EN` is selected.
+	- Spanish image when `ES` is selected.
+- Fully responsive navigation with compact mobile menu.
+- Scroll-based reveal animations:
+	- Section-level transitions.
+	- Per-card/per-box staggered transitions.
+- Team section with real contributor photos from `public/assets/team`.
+- Consistent card border and hover styling system.
+
+## 3. Tech Stack
+
+- Framework: Next.js 14 (Pages Router)
+- Language: TypeScript + React 18
+- Styling: Tailwind CSS + custom global CSS
+- Deployment: Vercel
+
+## 4. Project Structure
 
 ```
-├── pages/               # Next.js pages
-│   ├── index.tsx       # Main showcase page
-│   ├── _app.tsx        # App wrapper
-│   └── _document.tsx   # HTML document wrapper
-├── components/         # React components
-│   ├── Header.tsx      # Navigation
-│   ├── Hero.tsx        # Hero section
-│   ├── Problem.tsx     # Problem statement
-│   ├── Solution.tsx    # Solution overview
-│   ├── Features.tsx    # Key features
-│   ├── Architecture.tsx# System architecture
-│   ├── TechStack.tsx   # Technology stack
-│   ├── Screenshots.tsx # App screenshots
-│   ├── Team.tsx        # Team info
-│   └── Footer.tsx      # Footer
-├── styles/             # Tailwind CSS & globals
-└── public/            # Static assets
+projects/la-cuchara/
+	components/
+		layout/
+			HeaderBar.tsx
+			ProjectFooter.tsx
+		sections/
+			HeroSection.tsx
+			ProblemSection.tsx
+			SolutionSection.tsx
+			FeaturesSection.tsx
+			ArchitectureSection.tsx
+			TechStackSection.tsx
+			ScreenshotsSection.tsx
+			TeamSection.tsx
+	context/
+		LanguageContext.tsx
+	lib/
+		translations.ts
+	pages/
+		index.tsx
+		_app.tsx
+		_document.tsx
+	public/
+		assets/
+			diagrams/
+			screenshots/
+			team/
+	styles/
+		globals.css
 ```
 
-## Tech Stack (Showcase)
+## 5. Local Development
 
-- **Framework**: Next.js 14 + React 18
-- **Styling**: Tailwind CSS 3 + Custom CSS
-- **hosting**: Vercel (optimized)
-- **Fonts**: Poppins (Google Fonts)
+Prerequisites:
 
-## Getting Started
-
-### Prerequisites
 - Node.js 18+
-- npm or yarn
+- npm
 
-### Installation
+Commands:
 
 ```bash
 npm install
-```
-
-### Development
-
-```bash
 npm run dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000)
+Local URL:
 
-### Production Build
+- http://localhost:3000
+
+Production build check:
 
 ```bash
 npm run build
 npm start
 ```
 
-## Deployment on Vercel
+## 6. Deployment (Vercel)
 
-This project is optimized for Vercel:
+This app is already deployed to production:
+
+- https://la-cuchara.vercel.app
+
+To redeploy manually from this folder:
 
 ```bash
-# Via CLI
-vercel --prod
-
-# Or push to GitHub and auto-deploy via Vercel Dashboard
+npm exec --yes vercel -- --prod --yes
 ```
 
-## Design System
+Recommended dashboard setup:
 
-- **Primary**: Dark Navy `#1a1f2e`
-- **Accent**: Warm Orange `#E8754F`
-- **Font**: Poppins
-- **Approach**: Mobile-first responsive design
+1. Import repository in Vercel.
+2. Set Root Directory to `projects/la-cuchara`.
+3. Keep Framework preset as Next.js.
+4. Enable automatic production deploys from your main branch.
 
-## AZCA Full Project Details
+## 7. Team
 
-### Problem Statement
+- Adnan Hamidoun
+- Lucian Ciusa
+- Mario Garcia Romero
 
-27,000 employees in Madrid's Azca zone must eat lunch between 14:00-16:00. With only ~70 restaurants available:
-- Severe queue bottlenecks occur
-- Employees stuck in repetitive dining patterns
-- Limited menu discovery (restaurants print daily menus on paper)
-- Restaurants can't optimize staffing/inventory without demand visibility
+## 8. Notes
 
-### Solution Phases
-
-**Phase 1: Smart Discovery**
-- Restaurants upload daily menu photos
-- AI extracts and classifies dishes
-- Employees filter by location, cuisine, price, ratings
-- Community-driven ratings system
-
-**Phase 2: Demand Forecasting**
-- XGBoost ML model predicts daily service volumes
-- Features: Restaurant data, weather, calendar, historical trends
-- Actionable insights for restaurant optimization
-
-### Tech Stack (Full Project)
-
-**Frontend**: React + Vite + Tailwind CSS  
-**Backend**: FastAPI + SQLAlchemy + Python 3.10  
-**Database**: Azure SQL Server  
-**ML**: XGBoost + Azure AutoML + 30+ engineered features  
-**APIs**: Open-Meteo (weather), Document Intelligence  
-**Infrastructure**: Azure SQL, Logic Apps, Functions  
-
-## Key Features
-
-✅ Photo-based menu uploads with AI extraction  
-✅ Smart search & filtering (cuisine, price, location, ratings)  
-✅ Community dish ratings & rankings  
-✅ ML-powered demand predictions  
-✅ Weather integration for accuracy  
-✅ Calendar-aware forecasting (holidays, payroll periods)  
-✅ Production-ready error handling & audit logs  
-✅ Mobile-responsive UI  
-
-## Links
-
-- **Full AZCA Repository**: [github.com/adnanhamidoun/lacuchara](https://github.com/adnanhamidoun/lacuchara)
-- **View on Vercel**: (deployed URL will go here)
-- **Documentation**: See `/docs` in main repository
-
-## Team
-
-- Adnan Hamidoun (Lead Developer)
-- Lucian (Full Stack)
-- Mariioogrciia (Developer)
-- AzCA Team Contributors
-
-## License
-
-This showcase website is part of the AZCA project.
-
----
-
-**Made with ❤️ in Madrid** | Solving real-world problems with AI and cloud technology
+- This project folder is one preview inside a multi-project showcase repository.
+- Repository-level index and documentation are in the root `README.md`.

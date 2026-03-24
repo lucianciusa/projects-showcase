@@ -13,7 +13,11 @@ Monorepo-style portfolio for multiple project previews. Each project has its own
 
 | Project | Type | Stack | Status | Path |
 |---|---|---|---|---|
-| La Cuchara | Interactive project showcase website | Next.js, React, Tailwind CSS | Active | `projects/la-cuchara` |
+| La Cuchara | Interactive project showcase website | Next.js, React, Tailwind CSS | Live | `projects/la-cuchara` |
+
+## Live Deployments
+
+- La Cuchara (production): https://la-cuchara.vercel.app
 
 ## Current State (La Cuchara)
 
@@ -25,6 +29,8 @@ Implemented and documented in the project folder:
 - Scroll-driven reveal animations for sections and card boxes.
 - Team member photos loaded from `public/assets/team`.
 - Consistent border system and hover styling across cards.
+
+See project details in `projects/la-cuchara/README.md`.
 
 ## How To Add A New Project Preview
 
