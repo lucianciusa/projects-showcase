@@ -4,9 +4,21 @@ import { useLanguage } from '@/context/LanguageContext'
 export default function Team() {
   const { t } = useLanguage()
   const team = [
-    { name: 'Adnan Hamidoun', image: '/assets/team/adnan.jpg' },
-    { name: 'Lucian Ciusa', image: '/assets/team/lucian.jpg' },
-    { name: 'Mario García Romero', image: '/assets/team/mario.jpg' },
+    {
+      name: 'Adnan Hamidoun',
+      image: '/assets/team/adnan.jpg',
+      profileUrl: 'https://www.linkedin.com/in/adnan-hamidoun-el-habti-252079311/',
+    },
+    {
+      name: 'Lucian Ciusa',
+      image: '/assets/team/lucian.jpg',
+      profileUrl: 'https://www.linkedin.com/in/lucian-ciusa-66a7b92b6',
+    },
+    {
+      name: 'Mario García Romero',
+      image: '/assets/team/mario.jpg',
+      profileUrl: 'https://www.linkedin.com/in/mario-garc%C3%ADa-romero-453348304/',
+    },
   ]
 
   return (
@@ -21,15 +33,18 @@ export default function Team() {
 
         <div className="grid md:grid-cols-3 gap-6">
           {team.map((member, idx) => (
-            <div 
+            <a
               key={idx}
-              className="glass p-6 rounded-xl border border-white/10 hover:border-orange-accent/50 transition text-center"
+              href={member.profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass p-6 rounded-xl border border-white/10 hover:border-orange-accent/50 transition text-center block"
             >
               <div className="w-16 h-16 mx-auto mb-4 rounded-full border border-orange-accent/40 overflow-hidden">
                 <img src={member.image} alt={`${member.name} portrait`} className="w-full h-full object-cover" loading="lazy" />
               </div>
               <h3 className="text-lg font-bold">{member.name}</h3>
-            </div>
+            </a>
           ))}
         </div>
 

@@ -17,7 +17,7 @@ Monorepo-style portfolio for multiple project previews. Each project has its own
 
 ## Live Deployments
 
-- La Cuchara (production): https://la-cuchara.vercel.app
+- La Cuchara (production): https://cuisineaml-preview.vercel.app/
 
 ## Current State (La Cuchara)
 

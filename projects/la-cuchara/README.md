@@ -7,7 +7,7 @@ Interactive, bilingual project showcase for the La Cuchara / AZCA platform (AI r
 - Goal: present the product story, architecture, feature set, and technical stack in a polished, recruiter-friendly web experience.
 - Scope: this repository folder contains the showcase website only.
 - Main product repository: https://github.com/adnanhamidoun/lacuchara
-- Production URL: https://la-cuchara.vercel.app
+- Production URL: https://cuisineaml-preview.vercel.app/
 
 ## 2. Current Features
 
@@ -92,7 +92,7 @@ npm start
 
 This app is already deployed to production:
 
-- https://la-cuchara.vercel.app
+- https://cuisineaml-preview.vercel.app/
 
 To redeploy manually from this folder:
 
